@@ -1,0 +1,58 @@
+﻿<Window x:Class="Employees.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Employees"
+        mc:Ignorable="d"
+        Title="Информация по сотрудникам" Height="450" Width="867">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="859">
+            <TabItem Header="Список сотрудников">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="PersonsListDataGrid" HorizontalAlignment="Left" Height="371" Margin="243,10,0,0" VerticalAlignment="Top" Width="600">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" IsReadOnly="True" Binding="{Binding Path=full_name}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Статус" IsReadOnly="True" Binding="{Binding Path=status}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Должность" IsReadOnly="True" Binding="{Binding Path=post}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Отдел" IsReadOnly="True" Binding="{Binding Path=department}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Дата приема" IsReadOnly="True" Binding="{Binding Path=employee_date}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Дата увольнения" IsReadOnly="True" Binding="{Binding Path=fire_date}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="SearchPersonsButton" Content="Поиск" HorizontalAlignment="Left" Margin="7,336,0,0" VerticalAlignment="Top" Width="228" Height="45" Click="Button_Click_1"/>
+                    <Label Content="Статус" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Отдел" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Должность" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Фамилия или ее часть" HorizontalAlignment="Left" Margin="7,95,0,0" VerticalAlignment="Top" Height="28" Width="134"/>
+                    <TextBox x:Name="StatusBox" HorizontalAlignment="Left" Height="23" Margin="118,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="DepartmentBox" HorizontalAlignment="Left" Height="23" Margin="118,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="PostBox" HorizontalAlignment="Left" Height="23" Margin="118,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="LastNameBox" HorizontalAlignment="Left" Height="23" Margin="146,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Статистика по дням">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox x:Name="StatusComboBox" HorizontalAlignment="Left" Margin="75,38,0,0" VerticalAlignment="Top" Width="164"/>
+                    <Label Content="Статус" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="StartIntervalBox" HorizontalAlignment="Left" Height="23" Margin="75,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="EndIntervalBox" HorizontalAlignment="Left" Height="23" Margin="219,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Период с" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" Width="65"/>
+                    <Label Content="по" HorizontalAlignment="Left" Margin="195,9,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="EmployedCheckBox" Content="Принятые" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" IsChecked="True"  Click="EmployedCheckBox_Clicked"/>
+                    <CheckBox x:Name="UnemployedCheckBox" Content="Уволенные" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"  Click="UnemployedCheckBox_Clicked"/>
+                    <DataGrid x:Name="DaysListDataGrid" HorizontalAlignment="Left" Height="371" Margin="344,10,0,0" VerticalAlignment="Top" Width="340">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="DayColumn" Header="День" IsReadOnly="True" Binding="{Binding Path=day}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn x:Name="PersonsCountColumn" Header="Принятые" IsReadOnly="True" Binding="{Binding Path=personsCount}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Button x:Name="SearchDaysButton" Content="Поиск" HorizontalAlignment="Left" Margin="75,106,0,0" VerticalAlignment="Top" Width="184" Height="48" Click="SearchDaysButton_Click"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
